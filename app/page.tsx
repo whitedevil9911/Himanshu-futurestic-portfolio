@@ -215,85 +215,70 @@ export default function Home() {
           </a>
         </div>
       </section>
-
-      {/* About Section */}
       <section id="about" ref={aboutRef} className="py-20 relative">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+      <div className="container mx-auto px-6">
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">About Me</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
+        </motion.div>
+
+        {/* Content */}
+        <div className="flex flex-col md:flex-row items-center">
+          {/* About Me Card */}
+          <motion.div 
+            className="md:w-1/2 mb-10 md:mb-0"
+            initial={{ opacity: 0, x: -50 }}
+            animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">About Me</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto"></div>
+            <div className="glass-card p-6 md:p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-600"></div>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300">My Journey</h3>
+              <p className="text-gray-300 mb-6">
+                As a passionate technologist and futurist, I&rsquo;ve dedicated my career to pushing the boundaries of what&rsquo;s possible with technology. With over 8 years of experience in software development, AI research, and innovative product design, I strive to create solutions that make a meaningful impact.
+              </p>
+              <p className="text-gray-300">
+                My approach combines technical expertise with creative problem-solving, allowing me to tackle complex challenges and transform visionary ideas into functional realities. I&rsquo;m constantly exploring emerging technologies and finding ways to apply them to real-world problems.
+              </p>
+            </div>
           </motion.div>
-          
-          <div className="flex flex-col md:flex-row items-center">
-            <motion.div 
-              className="md:w-1/2 mb-10 md:mb-0"
-              initial={{ opacity: 0, x: -50 }}
-              animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="glass-card p-6 md:p-8 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-600"></div>
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300">My Journey</h3>
-                <p className="text-gray-300 mb-6">
-                  As a passionate technologist and futurist, I've dedicated my career to pushing the boundaries of what's possible with technology. With over 8 years of experience in software development, AI research, and innovative product design, I strive to create solutions that make a meaningful impact.
-                </p>
-                <p className="text-gray-300">
-                  My approach combines technical expertise with creative problem-solving, allowing me to tackle complex challenges and transform visionary ideas into functional realities. I'm constantly exploring emerging technologies and finding ways to apply them to real-world problems.
-                </p>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="md:w-1/2 md:pl-10"
-              initial={{ opacity: 0, x: 50 }}
-              animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <div className="relative">
-                <div className="timeline-line"></div>
-                
-                {/* Timeline items */}
-                <div className="relative pl-8 pb-10">
-                  <div className="timeline-dot" style={{ top: '0px' }}></div>
+
+          {/* Timeline */}
+          <motion.div 
+            className="md:w-1/2 md:pl-10"
+            initial={{ opacity: 0, x: 50 }}
+            animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="relative">
+              <div className="timeline-line"></div>
+
+              {/* Timeline Items */}
+              {[
+                { year: "2024 - Present", role: "Lead AI Researcher at FutureTech Labs" },
+                { year: "2021 - 2024", role: "Senior Software Engineer at InnovateCorp" },
+                { year: "2019 - 2021", role: "Full Stack Developer at TechSolutions" },
+                { year: "2016 - 2019", role: "Computer Science, MIT" },
+              ].map((item, index) => (
+                <div key={index} className="relative pl-8 pb-10">
+                  <div className="timeline-dot"></div>
                   <div className="glass-card p-4">
-                    <h4 className="text-lg font-semibold text-cyan-300">2024 - Present</h4>
-                    <p className="text-gray-300">Lead AI Researcher at FutureTech Labs</p>
+                    <h4 className="text-lg font-semibold text-cyan-300">{item.year}</h4>
+                    <p className="text-gray-300">{item.role}</p>
                   </div>
                 </div>
-                
-                <div className="relative pl-8 pb-10">
-                  <div className="timeline-dot" style={{ top: '0px' }}></div>
-                  <div className="glass-card p-4">
-                    <h4 className="text-lg font-semibold text-cyan-300">2021 - 2024</h4>
-                    <p className="text-gray-300">Senior Software Engineer at InnovateCorp</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-8 pb-10">
-                  <div className="timeline-dot" style={{ top: '0px' }}></div>
-                  <div className="glass-card p-4">
-                    <h4 className="text-lg font-semibold text-cyan-300">2019 - 2021</h4>
-                    <p className="text-gray-300">Full Stack Developer at TechSolutions</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-8">
-                  <div className="timeline-dot" style={{ top: '0px' }}></div>
-                  <div className="glass-card p-4">
-                    <h4 className="text-lg font-semibold text-cyan-300">2016 - 2019</h4>
-                    <p className="text-gray-300">Computer Science, MIT</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Skills Section */}
       <section id="skills" ref={skillsRef} className="py-20 relative bg-opacity-30 bg-black">
